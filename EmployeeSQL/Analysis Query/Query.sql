@@ -29,3 +29,35 @@ ON d.dept_no = n.dept_no
 JOIN employees AS e
 ON e.emp_no::VARCHAR = n.emp_no;
 
+--List First, Last name, and Sex of employee named "Hercules" and last name starts with "B"
+CREATE VIEW hercules_b AS
+SELECT first_name, last_name, sex
+FROM employees
+WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+
+--List all employees in the Sales department (employee number, last name, first name, and department name)
+CREATE VIEW sales_employees AS
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM departments AS d
+JOIN dept_emp AS n
+ON d.dept_no = n.dept_no
+JOIN employees AS e
+ON e.emp_no::VARCHAR = n.emp_no
+WHERE d.dept_name = 'Sales';
+
+--List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
+CREATE VIEW sales_development_employees AS
+SELECT e.emp_no, e.last_name, e.first_name, d.dept_name
+FROM departments AS d
+JOIN dept_emp AS n
+ON d.dept_no = n.dept_no
+JOIN employees AS e
+ON e.emp_no::VARCHAR = n.emp_no
+WHERE d.dept_name = 'Sales' OR d.dept_name = 'Development';
+
+--list the frequency count of employee last names, i.e., how many employees share each last name.
+CREATE VIEW last_name_count AS
+SELECT last_name, COUNT(last_name) AS Total
+FROM employees
+GROUP BY last_name
+ORDER BY Total DESC;
