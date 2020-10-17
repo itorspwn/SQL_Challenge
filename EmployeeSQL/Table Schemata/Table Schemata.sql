@@ -15,7 +15,7 @@ CREATE TABLE dept_emp(
 );
 
 SELECT * FROM dept_emp;
-drop table dept_manager
+
 --Create table for dept_manager
 CREATE TABLE dept_manager(
 	dept_no VARCHAR,
@@ -33,7 +33,7 @@ CREATE TABLE employees(
 	first_name VARCHAR,
 	last_name VARCHAR,
 	sex VARCHAR(1),
-	hire_date VARCHAR
+	hire_date DATE
 );
 
 SELECT * FROM employees;
